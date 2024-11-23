@@ -1,0 +1,15 @@
+{
+  "name": "Node_tut",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node app.js"
+  },
+  "repository": "https://github.com/SoWiEee/Node_tut.git",
+  "author": "SoWiEee <kawiisowieee@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.1",
+    "pug": "^3.0.3"
+  }
+}
