@@ -11,10 +11,13 @@ const router = express.Router();
 // receive function and save it, when receive request then execute it
 router.get('/add-product', adminController.getAddProduct);
 
+router.get('/products', adminController.getProducts)
+
 // only get request
 router.post('/add-product', adminController.postAddProduct);
 
-router.get('/products', adminController.getProducts)
+router.get('/edit-product/:productId', adminController.getEditProduct)
 
+router.post('/edit-product', adminController.postEditProduct)
 
 module.exports = router;
