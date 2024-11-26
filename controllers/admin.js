@@ -7,7 +7,6 @@ exports.getAddProduct = (req, res, next) => {
         path: '/admin/add-product',
         editing: false
     });
-    // next(); // transfer request to next middleware
 };
 
 exports.postAddProduct = (req, res, next) => {
@@ -15,9 +14,18 @@ exports.postAddProduct = (req, res, next) => {
     const imageUrl = req.body.imageUrl;
     const description = req.body.description;
     const price = req.body.price;
-    const product = new Product(null, title, imageUrl, description, price);
-    product.save();                     
-    res.redirect('/');
+
+    // create a new product
+    Product.create({
+        title: title,
+        price: price,
+        imageUrl: imageUrl,
+        description: description
+    })
+    .then(result => {
+        console.log('Created Product');
+    })
+    .catch(err => console.log(err));
 };
 
 exports.getEditProduct = (req, res, next) => {
