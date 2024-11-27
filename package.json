@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "dev": "node app.js"
+    "dev": "vite-node app.js"
   },
   "repository": "https://github.com/SoWiEee/Node_tut.git",
   "author": "SoWiEee <kawiisowieee@gmail.com>",
@@ -12,6 +12,7 @@
     "express": "^4.21.1",
     "mysql2": "^3.11.4",
     "pug": "^3.0.3",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "vite-node": "^2.1.6"
   }
 }
