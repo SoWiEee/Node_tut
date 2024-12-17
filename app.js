@@ -2,6 +2,7 @@ const path = require('path');
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const session = require('express-session')
 
 const errorController = require('./controllers/error')
 const sequelize = require('./util/database')
@@ -19,10 +20,16 @@ app.set('views', 'views');  // template location
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const authRoutes = require('./routes/auth');
 
 // parse body sent from <form>
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, "public")))
+app.use(session({
+    secret: 'my secret',
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.use((req, res, next) => {
     User.findByPk(1)
@@ -35,6 +42,7 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoutes); // only request to /admin will be handled by adminRoutes
 app.use(shopRoutes);
+app.use(authRoutes);
 
 app.use(errorController.get404);
 
